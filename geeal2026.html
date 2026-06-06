@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>GEEAL 2026 – Grupo de Evangelização Espírita</title>
+<title>GEEAL 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --azul1:#e8f4fd;--azul2:#c9e6f8;--azul3:#90c7ef;--azul4:#4a9fd4;--azul5:#1e6fa3;
-  --verde:#d4edda;--verde2:#28a745;--amarelo:#fff3cd;--amarelo2:#e6a817;--rosa:#f8d7e3;
+  --verde:#d4edda;--verde2:#28a745;--amarelo:#fff3cd;--amarelo2:#e6a817;
   --cinza:#f0f4f8;--branco:#ffffff;--texto:#2c3e50;--subtexto:#5a7a9a;
   --sombra:0 4px 16px rgba(74,159,212,.13);--sombra2:0 8px 32px rgba(30,111,163,.18);
   --bg-body:linear-gradient(135deg,#e8f4fd 0%,#f0f8ff 50%,#e8f4fd 100%);
@@ -27,17 +26,12 @@ body.dark{
   --border-stats:2px solid #1e3a52;--border-controles:2px solid #1e3a52
 }
 body{font-family:'Nunito',sans-serif;background:var(--bg-body);min-height:100vh;color:var(--texto);transition:background .3s,color .3s}
-
-/* HEADER */
 header{background:linear-gradient(135deg,var(--azul5) 0%,var(--azul4) 60%,#3ab0e8 100%);color:#fff;padding:2rem 1.5rem 1.5rem;text-align:center;position:relative;overflow:hidden}
 header::before{content:'';position:absolute;top:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
 header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.05);border-radius:50%}
-.star{display:inline-block;font-size:2.8rem;margin-bottom:.4rem;filter:drop-shadow(0 2px 8px rgba(255,255,255,.4))}
-header h1{font-family:'Lora',serif;font-size:clamp(1.4rem,4vw,2.1rem);font-weight:700;letter-spacing:.5px}
+header h1{font-family:'Lora',serif;font-size:clamp(1.4rem,4vw,2.1rem);font-weight:700}
 header p{font-size:.95rem;opacity:.88;margin-top:.3rem}
 .tagline{font-family:'Lora',serif;font-style:italic;font-size:.9rem;opacity:.75;margin-top:.2rem}
-
-/* STATS */
 .stats{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;padding:1.2rem 1.5rem;background:var(--bg-stats);border-bottom:var(--border-stats)}
 .stat{background:var(--azul1);border-radius:12px;padding:.6rem 1.2rem;text-align:center;min-width:110px;border:1.5px solid var(--azul2)}
 .stat-num{font-size:1.6rem;font-weight:800;color:var(--azul5);line-height:1}
@@ -46,27 +40,21 @@ header p{font-size:.95rem;opacity:.88;margin-top:.3rem}
 .stat.realizado{background:var(--verde);border-color:#a8d5b5}
 .stat.proximo .stat-num{color:var(--amarelo2)}
 .stat.proximo{background:var(--amarelo);border-color:#f0d080}
-
-/* CONTROLES */
 .controles{background:var(--bg-controles);padding:1rem 1.5rem;border-bottom:var(--border-controles);display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
 .busca-wrap{flex:1;min-width:200px;position:relative}
-.busca-wrap input{width:100%;padding:.55rem .9rem .55rem 2.4rem;border:2px solid var(--azul2);border-radius:10px;font-family:inherit;font-size:.9rem;outline:none;transition:.2s}
+.busca-wrap input{width:100%;padding:.55rem .9rem .55rem 2.4rem;border:2px solid var(--azul2);border-radius:10px;font-family:inherit;font-size:.9rem;outline:none;background:var(--bg-card);color:var(--texto)}
 .busca-wrap input:focus{border-color:var(--azul4)}
-.busca-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--azul4);font-size:1rem}
+.busca-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--azul4)}
 .filtros-wrap{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
 select{padding:.5rem .8rem;border:2px solid var(--azul2);border-radius:10px;font-family:inherit;font-size:.85rem;background:var(--bg-card);color:var(--texto);outline:none;cursor:pointer}
 select:focus{border-color:var(--azul4)}
 .view-toggle{display:flex;gap:.3rem}
 .view-btn{padding:.45rem .7rem;border:2px solid var(--azul2);background:var(--bg-card);border-radius:8px;cursor:pointer;font-size:1rem;transition:.2s;color:var(--texto)}
 .view-btn.ativo{background:var(--azul4);border-color:var(--azul4);color:#fff}
-
-/* GRID */
 .container{padding:1.2rem 1.5rem;max-width:1400px;margin:0 auto}
 .resultado-info{font-size:.85rem;color:var(--subtexto);margin-bottom:.8rem;font-weight:600}
-
-/* CARDS */
 .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
-.card{background:var(--bg-card);border-radius:16px;box-shadow:var(--sombra);padding:1.2rem;border-left:5px solid var(--azul3);transition:.2s;cursor:pointer;position:relative}
+.card{background:var(--bg-card);border-radius:16px;box-shadow:var(--sombra);padding:1.2rem;border-left:5px solid var(--azul3);transition:.2s;cursor:pointer}
 .card:hover{transform:translateY(-3px);box-shadow:var(--sombra2);border-left-color:var(--azul5)}
 .card.realizado{border-left-color:var(--verde2)}
 .card.proximo{border-left-color:var(--amarelo2)}
@@ -74,21 +62,17 @@ select:focus{border-color:var(--azul4)}
 .card-num{font-size:.75rem;font-weight:800;color:var(--azul4);text-transform:uppercase;letter-spacing:1px}
 .card-tema{font-family:'Lora',serif;font-size:1rem;font-weight:700;color:var(--texto);margin:.3rem 0 .5rem;line-height:1.3}
 .card-meta{font-size:.8rem;color:var(--subtexto);display:flex;flex-wrap:wrap;gap:.3rem .8rem}
-.card-meta span{display:flex;align-items:center;gap:.25rem}
 .tag{display:inline-block;padding:.15rem .6rem;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
 .tag.realizado{background:var(--verde);color:#1a7a35}
 .tag.proximo{background:var(--amarelo);color:#8a6200}
 .tag.livre{background:#fdebd0;color:#a04000}
 .tag.bloco{background:var(--azul1);color:var(--azul5)}
 .card-footer{margin-top:.8rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.4rem}
-.btn-anexo{font-size:.75rem;padding:.3rem .7rem;background:var(--azul1);border:1.5px solid var(--azul3);color:var(--azul5);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;transition:.2s}
-.btn-anexo:hover{background:var(--azul2)}
+.btn-anexo{font-size:.75rem;padding:.3rem .7rem;background:var(--azul1);border:1.5px solid var(--azul3);color:var(--azul5);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700}
 .anexo-count{font-size:.7rem;color:var(--subtexto);font-weight:600}
-
-/* LISTA */
 .lista{display:flex;flex-direction:column;gap:.5rem}
 .item-lista{background:var(--bg-card);border-radius:12px;box-shadow:0 2px 8px rgba(74,159,212,.1);padding:.8rem 1.1rem;display:flex;align-items:center;gap:.8rem;border-left:4px solid var(--azul3);cursor:pointer;transition:.2s}
-.item-lista:hover{transform:translateX(4px);box-shadow:var(--sombra)}
+.item-lista:hover{transform:translateX(4px)}
 .item-lista.realizado{border-left-color:var(--verde2)}
 .item-lista.proximo{border-left-color:var(--amarelo2)}
 .item-lista.livre{border-left-color:#e67e22}
@@ -97,8 +81,6 @@ select:focus{border-color:var(--azul4)}
 .item-tema{font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .item-sub{font-size:.75rem;color:var(--subtexto);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .item-right{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
-
-/* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(20,60,100,.45);backdrop-filter:blur(3px);z-index:1000;align-items:center;justify-content:center;padding:1rem}
 .overlay.open{display:flex}
 .modal{background:var(--bg-card);border-radius:20px;box-shadow:var(--sombra2);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
@@ -106,11 +88,10 @@ select:focus{border-color:var(--azul4)}
 .modal-num{font-size:.8rem;font-weight:800;opacity:.8;text-transform:uppercase;letter-spacing:1px}
 .modal-titulo{font-family:'Lora',serif;font-size:1.2rem;font-weight:700;margin:.3rem 0;line-height:1.35}
 .modal-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem}
-.btn-fechar{position:absolute;top:.8rem;right:.8rem;background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:.2s}
-.btn-fechar:hover{background:rgba(255,255,255,.35)}
+.btn-fechar{position:absolute;top:.8rem;right:.8rem;background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center}
 .modal-body{padding:1.2rem 1.5rem}
 .modal-section{margin-bottom:1.1rem}
-.modal-section h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.8px;color:var(--azul4);font-weight:800;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.modal-section h3{font-size:.75rem;text-transform:uppercase;letter-spacing:.8px;color:var(--azul4);font-weight:800;margin-bottom:.4rem}
 .modal-section p{font-size:.9rem;line-height:1.6;color:var(--texto)}
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .info-item{background:var(--azul1);border-radius:10px;padding:.6rem .8rem}
@@ -118,37 +99,29 @@ select:focus{border-color:var(--azul4)}
 .info-item span{font-size:.88rem;font-weight:600;color:var(--texto)}
 .refs-lista{display:flex;flex-direction:column;gap:.3rem}
 .ref-item{background:var(--cinza);border-radius:8px;padding:.4rem .7rem;font-size:.82rem;color:var(--subtexto)}
-/* ANEXOS */
 .anexo-area{background:var(--azul1);border-radius:12px;padding:1rem;border:2px dashed var(--azul3)}
 .anexo-input-wrap{display:flex;gap:.6rem;align-items:center;margin-bottom:.8rem}
-.btn-selecionar{background:var(--azul4);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:700;transition:.2s}
-.btn-selecionar:hover{background:var(--azul5)}
+.btn-selecionar{background:var(--azul4);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:700}
 #fileInput{display:none}
 .arquivos-lista{display:flex;flex-direction:column;gap:.4rem}
-.arquivo-item{background:var(--bg-stats);border-radius:8px;padding:.45rem .7rem;display:flex;align-items:center;gap:.5rem;box-shadow:0 1px 4px rgba(74,159,212,.12)}
+.arquivo-item{background:var(--bg-stats);border-radius:8px;padding:.45rem .7rem;display:flex;align-items:center;gap:.5rem}
 .arquivo-icon{font-size:1.1rem}
 .arquivo-nome{flex:1;font-size:.82rem;color:var(--texto);font-weight:600;word-break:break-all}
 .arquivo-acoes{display:flex;gap:.3rem;flex-shrink:0}
-.btn-dl,.btn-rm{border:none;border-radius:6px;padding:.25rem .5rem;cursor:pointer;font-size:.75rem;font-weight:700;transition:.2s}
-.btn-dl{background:#d4edda;color:#1a7a35}
-.btn-dl:hover{background:#b8ddc4}
+.btn-dl,.btn-rm{border:none;border-radius:6px;padding:.25rem .5rem;cursor:pointer;font-size:.75rem;font-weight:700}
+.btn-dl{background:#d4edda;color:#1a7a35;text-decoration:none;display:inline-block}
 .btn-rm{background:#f8d7e3;color:#a0001a}
-.btn-rm:hover{background:#f0b0c0}
 .vazio{text-align:center;padding:2rem;color:var(--subtexto);font-style:italic}
-
 @media(max-width:600px){
   .info-grid{grid-template-columns:1fr}
   .controles{flex-direction:column;align-items:stretch}
-  .busca-wrap{min-width:0}
-  .filtros-wrap{flex-direction:column;align-items:stretch}
   select{width:100%}
 }
 </style>
 </head>
 <body>
-
 <header>
-  <button id="btnDark" onclick="toggleDark()" title="Alternar modo escuro" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:20px;padding:.35rem .85rem;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;z-index:10">🌙 Dark</button>
+  <button id="btnDark" onclick="toggleDark()" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:20px;padding:.35rem .85rem;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit">🌙 Dark</button>
   <h1>GEEAL 2026</h1>
   <p>Grupo de Educação Espírita André Luiz</p>
   <div class="tagline">Amar, Conhecer e Servir</div>
@@ -179,8 +152,8 @@ select:focus{border-color:var(--azul4)}
       <option value="Complementar">Complementar</option>
     </select>
     <div class="view-toggle">
-      <button class="view-btn ativo" id="btnGrade" title="Grade">⊞</button>
-      <button class="view-btn" id="btnLista" title="Lista">≡</button>
+      <button class="view-btn ativo" id="btnGrade">⊞</button>
+      <button class="view-btn" id="btnLista">≡</button>
     </div>
   </div>
 </div>
@@ -190,7 +163,6 @@ select:focus{border-color:var(--azul4)}
   <div id="conteudo"></div>
 </div>
 
-<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal" id="modal">
     <div class="modal-header">
@@ -216,12 +188,9 @@ select:focus{border-color:var(--azul4)}
       </div>
       <div class="modal-section" style="margin-top:1rem">
         <h3>📤 Compartilhar no WhatsApp</h3>
-        <button id="btnCopiarTexto" onclick="copiarModeloAula()" style="width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;padding:.7rem 1rem;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:.2s">
-          📋 Copiar modelo de aula para WhatsApp
-        </button>
+        <button id="btnCopiarTexto" onclick="copiarModeloAula()" style="width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;padding:.7rem 1rem;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer">📋 Copiar modelo de aula para WhatsApp</button>
         <div id="copiadoMsg" style="display:none;text-align:center;color:#128c7e;font-size:.82rem;font-weight:700;margin-top:.4rem">✅ Copiado! É só colar no WhatsApp.</div>
       </div>
-
       <div class="modal-section" style="margin-top:1rem">
         <h3>📎 Arquivos Anexados</h3>
         <div class="anexo-area">
@@ -238,352 +207,318 @@ select:focus{border-color:var(--azul4)}
 </div>
 
 <script>
-// ── SUPABASE CONFIG ──────────────────────────────────────────
-const SB_URL  = 'https://qwdheajlzrdizpqxvldw.supabase.co';
-const SB_KEY  = 'sb_publishable_5_rQpR2Jn9zzdB1I2f5Tqw_VsBUJpeH';
-const BUCKET  = 'anexos';
-const SB_HEAD = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+// ── SUPABASE ─────────────────────────────────────────────────
+var SB_URL  = 'https://qwdheajlzrdizpqxvldw.supabase.co';
+var SB_KEY  = 'sb_publishable_5_rQpR2Jn9zzdB1I2f5Tqw_VsBUJpeH';
+var BUCKET  = 'anexos';
+
+function sbHeaders() {
+  return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+}
 
 async function sbListar(aulaId) {
   try {
-    const r = await axios.post(
-      `${SB_URL}/storage/v1/object/list/${BUCKET}`,
-      { prefix: `aula_${aulaId}/`, limit: 100, offset: 0 },
-      { headers: { ...SB_HEAD, 'Content-Type': 'application/json' } }
-    );
-    return (r.data || []).filter(f => f.name && f.name !== '.emptyFolderPlaceholder');
-  } catch(e) { console.error('Listar erro:', e); return []; }
+    var r = await fetch(SB_URL + '/storage/v1/object/list/' + BUCKET, {
+      method: 'POST',
+      headers: Object.assign({}, sbHeaders(), {'Content-Type': 'application/json'}),
+      body: JSON.stringify({ prefix: 'aula_' + aulaId + '/', limit: 100, offset: 0 })
+    });
+    var data = await r.json();
+    return (Array.isArray(data) ? data : []).filter(function(f){ return f.name && f.name !== '.emptyFolderPlaceholder'; });
+  } catch(e) { return []; }
 }
 
 async function sbUpload(aulaId, file) {
-  const path = `aula_${aulaId}/${Date.now()}_${file.name}`;
-  const r = await axios.post(
-    `${SB_URL}/storage/v1/object/${BUCKET}/${path}`,
-    file,
-    { headers: { ...SB_HEAD, 'Content-Type': file.type || 'application/octet-stream' } }
-  );
-  return r.data;
+  var path = 'aula_' + aulaId + '/' + Date.now() + '_' + file.name;
+  var r = await fetch(SB_URL + '/storage/v1/object/' + BUCKET + '/' + path, {
+    method: 'POST',
+    headers: Object.assign({}, sbHeaders(), {'Content-Type': file.type || 'application/octet-stream'}),
+    body: file
+  });
+  if (!r.ok) { var e = await r.json(); throw new Error(e.message || 'Erro no upload'); }
+  return path;
 }
 
 async function sbDeletar(path) {
-  await axios.delete(`${SB_URL}/storage/v1/object/${BUCKET}/${path}`, { headers: SB_HEAD });
+  await fetch(SB_URL + '/storage/v1/object/' + BUCKET, {
+    method: 'DELETE',
+    headers: Object.assign({}, sbHeaders(), {'Content-Type': 'application/json'}),
+    body: JSON.stringify({ prefixes: [path] })
+  });
 }
 
 function sbPublicUrl(path) {
-  return `${SB_URL}/storage/v1/object/public/${BUCKET}/${path}`;
+  return SB_URL + '/storage/v1/object/public/' + BUCKET + '/' + path;
 }
 // ─────────────────────────────────────────────────────────────
-  {n:1,tema:"Respeito (como me comporto no GEEAL?)",obj:"",refs:"",resp:"Bia",entrega:"11/01",periodo:"18/01 a 23/01",status:"realizado",bloco:"Valores & Personagens"},
-  {n:2,tema:"Cooperação",obj:"",refs:"",resp:"Laura",entrega:"11/01",periodo:"25/01 a 30/01",status:"realizado",bloco:"Valores & Personagens"},
-  {n:3,tema:"Ailton Krenak – respeito à natureza",obj:"",refs:"",resp:"Andreia",entrega:"18/01",periodo:"01/02 a 06/02",status:"realizado",bloco:"Valores & Personagens"},
-  {n:4,tema:"Rebeca Andrade – disciplina e força de vontade",obj:"",refs:"",resp:"Bia e Analice",entrega:"25/01",periodo:"08/02 a 13/02",status:"realizado",bloco:"Valores & Personagens"},
-  {n:5,tema:"Malala Yousafzai – coragem moral e defesa da educação",obj:"",refs:"",resp:"Catarina",entrega:"04/02",periodo:"18/02 a 22/02",status:"realizado",bloco:"Valores & Personagens"},
-  {n:6,tema:"Greta Thunberg – responsabilidade, consciência ambiental e coerência entre discurso e ação",obj:"",refs:"",resp:"Danilo",entrega:"12/02",periodo:"26/02 a 01/03",status:"realizado",bloco:"Valores & Personagens"},
-  {n:7,tema:"Emicida – consciência social, valorização da cultura, respeito e reflexão",obj:"",refs:"",resp:"Laura",entrega:"18/02",periodo:"04/03 a 06/03",status:"realizado",bloco:"Valores & Personagens"},
-  {n:8,tema:"Espiritismo: A Doutrina dos Espíritos",subtema:"Introdução – A autoridade da doutrina espírita",obj:"Conhecer como foi o processo de codificação da DE / Conhecer o seu tríplice aspecto / conhecer e compreender a história e importância de Kardec",refs:"OESE – Introdução, Item II e Cap. I, item 5 e 8",resp:"Jenyffer e Bia",entrega:"25/02",periodo:"08/03 a 13/03",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:9,tema:"Reencarnação: Justiça Divina",subtema:"Cap. IV – Ninguém poderá ver o Reino de Deus se não nascer de novo",obj:"Compreender os conceitos e a justiça da reencarnação",refs:"OESE – Cap. IV itens 4 a 17 e Cap. II itens 2 e 3",resp:"Laura",entrega:"03/03",periodo:"15/03 a 20/03",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:10,tema:"Resiliência e resignação: Fé ativa",subtema:"Cap. V – Bem-aventurados os aflitos",obj:"Fortalecer a resiliência através do entendimento de que todas as aflições têm um motivo e uma finalidade",refs:"OESE – Cap. V",resp:"Raphael",entrega:"09/03",periodo:"22/03 a 27/03",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:11,tema:"Rotina com Jesus / O Consolador prometido",subtema:"Cap. VI – O jugo leve / O Cristo Consolador",obj:"Aproximar Jesus do nosso dia a dia / compreender a grandeza de Jesus / compreender a Doutrina Espírita como roteiro de vida",refs:"OESE – Cap. VI",resp:"Shirley",entrega:"15/03",periodo:"29/03 a 03/04",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:12,tema:"A Lei de Amor – Ama e trabalha",subtema:"Cap. XI – Amar ao próximo como a si mesmo",obj:"Compreender que o Amor interliga todas as criaturas e deve amenizar as misérias sociais / refletir sobre o poder do trabalho com foco no Bem coletivo",refs:"OESE – Cap. XI, itens 8 a 10",resp:"Valéria",entrega:"21/03",periodo:"05/04 a 10/04",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:13,tema:"Humildade – Fora da caridade não há salvação",subtema:"Cap. XV – Fora da caridade não há salvação",obj:"Sentir que a caridade aquece o coração / construir olhares de empatia e formas de comunicação não violenta / compreender a verdadeira caridade segundo a DE e Jesus",refs:"OESE – Cap. XV",resp:"Marizete",entrega:"29/03",periodo:"12/04 a 17/04",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:14,tema:"Afinidades Espirituais / Evangelho no lar / Sabedoria para pedir",subtema:"Cap. XXVII – Pedi e obtereis",obj:"Construir o hábito de nos mantermos conectados com a espiritualidade / compreender o poder da prece / refletir sobre o saber pedir",refs:"",resp:"Bia e Analice",entrega:"04/04",periodo:"19/04 a 24/04",status:"realizado",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:15,tema:"Animais, nossos irmãos",obj:"",refs:"",resp:"Catarina",entrega:"11/04",periodo:"26/04 a 01/05",status:"realizado",bloco:"Complementar"},
-  {n:16,tema:"Deus, o grande amigo de todos",subtema:"Deus como causa primeira / Atributos divinos / Deus presente em tudo",obj:"Apresentar Deus como Criador bondoso e justo; levar as crianças a compreenderem que Deus existe e se manifesta na criação, no amor e dentro de cada um",refs:"Livro dos Espíritos – Livro I, Cap. I, questões 1 ao 13",resp:"Danilo",entrega:"18/04",periodo:"03/05 a 08/05",status:"realizado",bloco:"Doutrina Espírita"},
-  {n:17,tema:"Somos Espíritos em aprendizado",subtema:"O que são Espíritos / Espíritos criados simples e ignorantes, em evolução",obj:"Compreender a natureza espiritual do ser humano; conscientizar que somos espíritos imortais vivendo uma experiência material",refs:"Livro dos Espíritos – Livro II, Cap. I, questões 87 e 135",resp:"Bia",entrega:"25/04",periodo:"10/05 a 15/05",status:"realizado",bloco:"Doutrina Espírita"},
-  {n:18,tema:"Vivendo muitas vezes – A Reencarnação",subtema:"Reencarnação como oportunidade / A criança como Espírito reencarnado",obj:"Introduzir o conceito de pluralidade das existências; compreender que o Espírito vive muitas existências para aprender e se melhorar",refs:"Livro dos Espíritos – Livro II, Cap. IV, questões 166 a 171",resp:"Laura",entrega:"02/05",periodo:"17/05 a 22/05",status:"realizado",bloco:"Doutrina Espírita"},
-  {n:19,tema:"Deus espalhou a vida pelo Universo – Pluralidade dos mundos habitados",subtema:"A Terra é um mundo de aprendizado / Existem outros mundos",obj:"Ajudar a criança a compreender que Deus nos ama, que existem muitos mundos criados por Ele, despertando sentimento de pertencimento, esperança e confiança na justiça divina",refs:"Livro dos Espíritos – questões 55 a 58 / 234 e 236",resp:"Marizete",entrega:"09/05",periodo:"24/05 a 29/05",status:"realizado",bloco:"Doutrina Espírita"},
-  {n:20,tema:"Escolhas certas – Livre-arbítrio",subtema:"Liberdade e livre-arbítrio / Consequências naturais das ações",obj:"Levar a criança a compreender que é responsável por suas escolhas, que elas têm consequências, e que pensar antes de agir ajuda a crescer como Espírito",refs:"Livro dos Espíritos – Livro III, Cap. X, questões 843 a 850 e questões 621 e 622",resp:"Raphael",entrega:"16/05",periodo:"31/05 a 05/06",status:"realizado",bloco:"Doutrina Espírita"},
-  {n:21,tema:"Viver em paz é respeitar e amar",subtema:"Amor e carinho no dia a dia / Respeito / Fazer as pazes",obj:"Levar a criança a compreender que a paz se constrói com atitudes de amor, respeito, diálogo e cuidado com o outro, seguindo o exemplo de Jesus",refs:"Livro dos Espíritos – questões 642, 873 a 875 e 886",resp:"Shirley",entrega:"23/05",periodo:"07/06 a 12/06",status:"proximo",bloco:"Doutrina Espírita"},
-  {n:22,tema:"Nosso protetor invisível",subtema:"Influência dos Espíritos em nossa vida / Espíritos protetores",obj:"Apresentar o conceito de anjo da guarda / levar a criança a sentir-se amada, protegida e nunca sozinha",refs:"Livro dos Espíritos – Livro II, Cap. IX – Intervenção dos Espíritos no Mundo Corpóreo",resp:"Valéria",entrega:"30/05",periodo:"14/06 a 19/06",status:"proximo",bloco:"Doutrina Espírita"},
-  {n:23,tema:"Espíritos, Percepções Espirituais e o Medo",subtema:"Há Espíritos? / Lugares assombrados e as percepções espirituais",obj:"Levar os evangelizandos a compreenderem que os Espíritos existem e continuam vivendo após a morte do corpo, desmistificando o medo relacionado às percepções espirituais",refs:"Livro dos Médiuns – Introdução e Cap. 9 / Livro dos Espíritos – Parte Segunda, Cap. VI",resp:"Bia",entrega:"06/06",periodo:"21/06 a 26/06",status:"proximo",bloco:"Mediunidade"},
-  {n:24,tema:"Identidade dos Espíritos: Os bons e os maus e suas consequências",obj:"Levar o educando a compreender que os Espíritos são seres humanos em diferentes graus de evolução moral e intelectual, distinguindo os bons dos maus pelas ideias e sentimentos",refs:"Livro dos Médiuns – Cap. 24",resp:"Catarina",entrega:"13/06",periodo:"28/06 a 03/07",status:"proximo",bloco:"Mediunidade"},
-  {n:25,tema:"Mediunidade e Comunicabilidade dos Espíritos",subtema:"O que é mediunidade? / Comunicabilidade dos Espíritos",obj:"Compreender que a mediunidade é uma faculdade natural por meio da qual ocorre a comunicabilidade dos Espíritos, devendo ser vivenciada com responsabilidade, equilíbrio moral e finalidade no bem",refs:"LM – Cap. 14, item 49; Cap. 19 / OESE – Cap. 24, item 12; Cap. 26, item 10",resp:"Danilo",entrega:"20/06",periodo:"05/07 a 10/07",status:"proximo",bloco:"Mediunidade"},
-  {n:26,tema:"Eu sou Médium e há algum perigo nisso? / Mediunidade infantil",obj:"Esclarecer sobre o que é ser um médium e como identificar características mediúnicas; aprender a observar os sinais mediúnicos nas crianças",refs:"LM – Cap. 14, item 159; Cap. 28, item 221 / Dúvidas sobre a Mediunidade, questões 1 a 3 e 6",resp:"Jenyffer",entrega:"27/06",periodo:"12/07 a 17/07",status:"proximo",bloco:"Mediunidade"},
-  {n:27,tema:"Educação da mediunidade / Finalidade moral da mediunidade",obj:"Refletir sobre a importância da autoavaliação do médium e esclarecer sobre o objetivo maior do exercício da mediunidade com Jesus, que é a caridade ao próximo",refs:"LM – Cap. 217, questão 218; Cap. 20 / Dúvidas sobre a Mediunidade, questão 8 / No limiar do infinito – Cap. 10 / Oferenda – Cap. Educação Mediúnica",resp:"Laura",entrega:"04/07",periodo:"19/07 a 24/07",status:"proximo",bloco:"Mediunidade"},
-  {n:28,tema:"Cuidando da Mente e do Coração",subtema:"Pensamentos e sentimentos / Pensamentos bons atraem paz / Fazer o bem nos fortalece",obj:"Levar o evangelizando a compreender a importância de cuidar dos pensamentos e sentimentos, desenvolvendo vigilância interior e equilíbrio emocional e espiritual",refs:"LM – Cap. 14, item 49; Cap. 23, itens 237 a 254 / A Gênese – Cap. 14, itens 45 a 49 / OESE – Cap. 24, item 12; Cap. 26, item 10",resp:"Marizete",entrega:"11/07",periodo:"26/07 a 31/07",status:"proximo",bloco:"Mediunidade"},
-  {n:29,tema:"Tema Livre",subtema:"Sugestão: Obsessão e tipos de obsessão / Natureza das comunicações / Os filhos são médiuns dos pais",obj:"",refs:"",resp:"Raphael",entrega:"18/07",periodo:"02/08 a 07/08",status:"livre",bloco:"Mediunidade"},
-  {n:30,tema:"Tema Livre",subtema:"Sugestão: Cap. XVII – Sede perfeitos / Reforma Íntima",obj:"",refs:"",resp:"Shirley",entrega:"25/07",periodo:"09/08 a 14/08",status:"livre",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:31,tema:"Introdução aos estados espirituais",obj:"Levar o evangelizando a compreender que céu e inferno são estados de consciência ligados às escolhas e atitudes, e que a prática do bem conduz à paz e ao crescimento espiritual",refs:"O Céu e o Inferno – Primeira Parte (Doutrina Espírita): Céu, Inferno e penas futuras; Segunda Parte – Exemplos",resp:"Valéria",entrega:"01/08",periodo:"16/08 a 21/08",status:"proximo",bloco:"Céu e Inferno"},
-  {n:32,tema:"As causas do sofrimento espiritual",obj:"Levar o evangelizando a compreender que o sofrimento espiritual decorre das escolhas e sentimentos, como orgulho e egoísmo, e que sempre é possível refletir, arrepender-se e recomeçar",refs:"O Céu e o Inferno – Segunda Parte (Espíritos sofredores); Primeira Parte – causas do sofrimento moral",resp:"Bia e Analice",entrega:"08/08",periodo:"23/08 a 28/08",status:"proximo",bloco:"Céu e Inferno"},
-  {n:33,tema:"A felicidade dos bons",obj:"Como o bem gera leveza na alma, na Terra e no mundo espiritual; demonstrar que o 'Céu' não é um lugar, mas um estado de paz interior de quem cumpre a lei do amor",refs:"O Céu e o Inferno – Cap. III (A Felicidade) / OESE – Cap. V, item 20",resp:"Catarina",entrega:"15/08",periodo:"30/08 a 04/09",status:"proximo",bloco:"Céu e Inferno"},
-  {n:34,tema:"Arrependimento e Reparação",subtema:"O que é arrependimento / O que é remorso / Como curar a dor que causamos",obj:"Compreender que o erro faz parte do processo de aprendizado e evolução espiritual, que o sofrimento moral surge como consequência das escolhas, e que o arrependimento sincero permite o alívio da consciência e o recomeço",refs:"O Céu e o Inferno – 1ª Parte, Cap. VII, itens 1 a 10; Cap. VIII e IX / OESE – Cap. V, itens 4 a 10",resp:"Danilo",entrega:"22/08",periodo:"06/09 a 11/09",status:"proximo",bloco:"Céu e Inferno"},
-  {n:35,tema:"A misericórdia divina",subtema:"Deus como Pai amoroso / Amparo espiritual aos arrependidos / Justiça divina unida à bondade",obj:"Favorecer a compreensão de Deus como Pai amoroso e justo, que sempre oferece novas oportunidades de recomeço, despertando confiança na misericórdia divina",refs:"O Céu e o Inferno / Livro dos Espíritos – Livro I, Cap. I; Livro III, Cap. XI; Livro IV, Cap. II",resp:"Jenyffer",entrega:"29/08",periodo:"13/09 a 18/09",status:"proximo",bloco:"Céu e Inferno"},
-  {n:36,tema:"O tempo e a vontade de mudar",subtema:"O sofrimento não é eterno / Progresso espiritual como lei universal / Culpa paralisa; responsabilidade liberta",obj:"Levar os evangelizandos a compreender que o tempo de superação das dificuldades está relacionado à disposição interior para a mudança, estimulando a responsabilidade pessoal e o autoconhecimento",refs:"",resp:"Laura",entrega:"05/09",periodo:"20/09 a 25/09",status:"proximo",bloco:"Céu e Inferno"},
-  {n:37,tema:"Aplicação prática hoje – construindo o céu interior",subtema:"Aplicação dos ensinamentos espíritas no cotidiano / Encarnação como oportunidade",obj:"Estimular os evangelizandos a perceberem a encarnação atual como oportunidade de progresso espiritual, incentivando escolhas responsáveis para a construção da serenidade interior",refs:"",resp:"Marizete",entrega:"12/09",periodo:"27/09 a 02/10",status:"proximo",bloco:"Céu e Inferno"},
-  {n:38,tema:"Tema Livre",subtema:"Sugestão: Revolta prolonga a dor; aceitação responsável favorece a superação",obj:"",refs:"",resp:"Raphael",entrega:"19/09",periodo:"04/10 a 09/10",status:"livre",bloco:"Céu e Inferno"},
-  {n:39,tema:"Tríplice aspecto da Doutrina – Foco na Ciência",subtema:"Espiritismo: Razão, Ciência e Prova / O Espiritismo e o método científico",obj:"Demonstrar que o Espiritismo não é fruto da imaginação, mas resultado da aplicação do método científico-experimental sobre as leis naturais",refs:"A Gênese – Cap. I, itens 14, 15, 16 e 55 / Kardec – A Biografia (Marcel Souto Maior)",resp:"Shirley",entrega:"26/09",periodo:"11/10 a 16/10",status:"proximo",bloco:"A Gênese"},
-  {n:40,tema:"Formação da Terra",subtema:"Como a Terra nasceu? / O Espiritismo e a superação das teorias religiosas do século XIX / Criacionismo literal x Espiritismo",obj:"Mostrar como o Espiritismo entende a formação do nosso planeta e sua similaridade com o que estudamos no colégio, incluindo a refutação de outras teorias da época",refs:"A Gênese – Cap. VII (Esboço geológico da Terra); Cap. VIII – Teorias sobre a Formação da Terra",resp:"Valéria",entrega:"03/10",periodo:"18/10 a 23/10",status:"proximo",bloco:"A Gênese"},
-  {n:41,tema:"Formação dos Seres Vivos",subtema:"Da sementinha ao ser vivo / O Espiritismo e a explicação racional da vida / Tempo biológico e tempo espiritual",obj:"Mostrar que a formação dos seres vivos seguiu as mesmas leis naturais que regem o reino inorgânico, especificamente a lei de afinidade molecular",refs:"A Gênese – Cap. X, itens 12 a 15",resp:"Bia e Analice",entrega:"10/10",periodo:"25/10 a 30/10",status:"proximo",bloco:"A Gênese"},
-  {n:42,tema:"Explicação dos milagres",subtema:"Existem milagres? / Existem milagres ou leis desconhecidas? / Ciência, Espiritismo e o fim do sobrenatural",obj:"Compreender que os chamados milagres são manifestações de leis naturais de Deus e que o maior milagre ensinado por Jesus é a transformação moral pelo amor e pelo bem",refs:"A Gênese – Cap. XIII (Caracteres dos Milagres); Cap. XV (Os Milagres do Evangelho)",resp:"Catarina",entrega:"17/10",periodo:"01/11 a 06/11",status:"proximo",bloco:"A Gênese"},
-  {n:43,tema:"Teoria da Presciência",subtema:"Os Espíritos preveem o futuro? / Deus sabe, mas nós escolhemos / Por que o futuro não pode ser totalmente revelado?",obj:"Compreender que a presciência espiritual é uma visão ampliada do tempo, concedida para fins úteis, sem anular o livre-arbítrio e a responsabilidade moral do ser humano",refs:"A Gênese – Cap. XVII",resp:"Danilo",entrega:"24/10",periodo:"08/11 a 13/11",status:"proximo",bloco:"A Gênese"},
-  {n:44,tema:"Transformação moral do globo – nova era",subtema:"O mundo está aprendendo a amar / O que é a Nova Era? / Crises morais: luta de ideias",obj:"Compreender que a Terra vive um processo de regeneração moral, no qual cada Espírito é responsável, por suas escolhas, pela construção de uma nova era de fraternidade e progresso pacífico",refs:"A Gênese – Cap. IX, itens 11 a 14; Cap. XVII, itens 56 a 63",resp:"Jenyffer",entrega:"31/10",periodo:"15/11 a 20/11",status:"proximo",bloco:"A Gênese"},
-  {n:45,tema:"Tema Livre",subtema:"Sugestão: O repovoamento espiritual da Terra",obj:"",refs:"",resp:"Laura",entrega:"07/11",periodo:"22/11 a 27/11",status:"livre",bloco:"A Gênese"},
-  {n:46,tema:"Fazer o bem sempre – Lei de Amor",subtema:"Lei de justiça, amor e caridade / A Regra Áurea / Caridade como benevolência",obj:"Ensinar a Regra Áurea como base moral espírita; despertar na criança o entendimento de que fazer o bem é uma forma de amar a Deus e às pessoas",refs:"Livro dos Espíritos – Livro III, Cap. XI – Lei de Justiça, Amor e Caridade",resp:"Marizete",entrega:"14/11",periodo:"29/11 a 04/12",status:"proximo",bloco:"Doutrina Espírita"},
-  {n:47,tema:"Cada um tem uma missão na vida",subtema:"Ocupações e missões dos Espíritos / Utilidade do trabalho / Cooperação",obj:"Ajudar a criança a perceber que todos nós temos uma missão",refs:"Livro dos Espíritos – questões 558 a 585",resp:"Raphael",entrega:"21/11",periodo:"06/12 a 11/12",status:"proximo",bloco:"Doutrina Espírita"},
-  {n:48,tema:"Finalidade moral da mediunidade",obj:"Esclarecer sobre o objetivo maior do exercício da mediunidade com Jesus, que é a caridade ao próximo",refs:"",resp:"Shirley",entrega:"28/11",periodo:"13/12 a 18/12",status:"proximo",bloco:"Mediunidade"},
-  {n:49,tema:"Natureza das comunicações – como?",obj:"Levar os evangelizandos a compreender que nem todas as comunicações espirituais têm a mesma qualidade, aprendendo a importância do discernimento e da vigilância para identificar mensagens elevadas",refs:"Livro dos Médiuns – Cap. 20",resp:"Valéria",entrega:"05/12",periodo:"03/01 a 08/01",status:"proximo",bloco:"Mediunidade"},
-  {n:50,tema:"Buscai e achareis – Pensamento positivo / Foco no Bem",subtema:"Cap. XXV – Buscai e achareis",obj:"Compreender a importância de alinhar o que queremos e o que precisamos / refletir sobre o que temos buscado",refs:"",resp:"Bia e Analice",entrega:"12/12",periodo:"10/01 a 15/01",status:"proximo",bloco:"O Evangelho Segundo o Espiritismo"},
-  {n:51,tema:"A reparação ativa",subtema:"Necessidade de reparar o mal cometido / Reconstrução de laços e valores",obj:"Levar os evangelizandos a compreender que todo erro pode ser reparado, que a evolução espiritual acontece quando assumimos responsabilidade por nossos atos",refs:"O Céu e o Inferno – Parte I, Cap. VII; Parte II, Cap. VIII / Livro dos Espíritos – Cap. IX",resp:"Catarina",entrega:"19/12",periodo:"17/01 a 22/01",status:"proximo",bloco:"Céu e Inferno"},
-  {n:52,tema:"Aplicação prática hoje – Responsabilidade nas relações",subtema:"Responsabilidade nas relações, no uso do tempo, dos bens e dos afetos",obj:"Estimular os evangelizandos a perceberem a encarnação atual como oportunidade de progresso espiritual, incentivando escolhas responsáveis nas relações",refs:"",resp:"Danilo",entrega:"09/01",periodo:"24/01 a 29/01",status:"proximo",bloco:"Complementar"},
-  {n:53,tema:"O que são os nossos fluídos?",subtema:"Vivemos num oceano invisível / O pensamento como força criadora / Qualidades morais dos fluidos",obj:"Compreender que vivemos imersos em um oceano invisível de matéria sutil, no qual o pensamento atua como força criadora e agente modelador dos fluidos",refs:"A Gênese – Cap. XIV — Os Fluidos",resp:"Jenyffer",entrega:"16/01",periodo:"31/01 a 05/02",status:"proximo",bloco:"A Gênese"},
-  {n:54,tema:"Emigração/Imigração entre planetas – Pluralidade dos mundos habitados",subtema:"A Terra é nossa escola / Por que alguns Espíritos mudam de mundo? / Regeneração da Terra e migrações espirituais",obj:"Compreender que a Terra é a morada espiritual adequada ao nosso momento evolutivo e que as emigrações entre mundos ocorrem, relacionando a responsabilidade de cada Espírito ao destino coletivo da humanidade",refs:"A Gênese – Cap. XI (Gênese Espiritual), itens 35 a 37",resp:"Laura",entrega:"23/01",periodo:"07/02 a 12/02",status:"proximo",bloco:"A Gênese"},
-  {n:55,tema:"Geração nova – O repovoamento espiritual da Terra",subtema:"Como se dá a mudança dos espíritos que nascem sobre a Terra e como isso gera o progresso",obj:"Explicar a ideia da Geração nova, como se dá a mudança dos espíritos que nascem sobre a Terra e como isso gera o progresso",refs:"",resp:"Marizete",entrega:"30/01",periodo:"21/02 a 26/02",status:"proximo",bloco:"Complementar"}
-];
 
-let viewMode = 'grade';
-let aulaAtiva = null;
+// ── DADOS ────────────────────────────────────────────────────
+var AULAS = [];
+(function(){
+  var d = [
+    [1,"Respeito (como me comporto no GEEAL)","","","Bia","11/01","18/01 a 23/01","realizado","Valores & Personagens"],
+    [2,"Cooperação","","","Laura","11/01","25/01 a 30/01","realizado","Valores & Personagens"],
+    [3,"Ailton Krenak – respeito à natureza","","","Andreia","18/01","01/02 a 06/02","realizado","Valores & Personagens"],
+    [4,"Rebeca Andrade – disciplina e força de vontade","","","Bia e Analice","25/01","08/02 a 13/02","realizado","Valores & Personagens"],
+    [5,"Malala Yousafzai – coragem moral e defesa da educação","","","Catarina","04/02","18/02 a 22/02","realizado","Valores & Personagens"],
+    [6,"Greta Thunberg – responsabilidade, consciência ambiental","","","Danilo","12/02","26/02 a 01/03","realizado","Valores & Personagens"],
+    [7,"Emicida – consciência social, valorização da cultura","","","Laura","18/02","04/03 a 06/03","realizado","Valores & Personagens"],
+    [8,"Espiritismo – A Doutrina dos Espíritos","Introdução – A autoridade da doutrina espírita","Conhecer o processo de codificação da DE, seu tríplice aspecto e a importância de Kardec","OESE – Introdução, Item II e Cap. I, item 5 e 8","Jenyffer e Bia","25/02","08/03 a 13/03","realizado","O Evangelho Segundo o Espiritismo"],
+    [9,"Reencarnação – Justiça Divina","Cap. IV – Ninguém poderá ver o Reino de Deus se não nascer de novo","Compreender os conceitos e a justiça da reencarnação","OESE – Cap. IV itens 4 a 17 e Cap. II itens 2 e 3","Laura","03/03","15/03 a 20/03","realizado","O Evangelho Segundo o Espiritismo"],
+    [10,"Resiliência e resignação – Fé ativa","Cap. V – Bem-aventurados os aflitos","Fortalecer a resiliência através do entendimento de que todas as aflições têm um motivo e uma finalidade","OESE – Cap. V","Raphael","09/03","22/03 a 27/03","realizado","O Evangelho Segundo o Espiritismo"],
+    [11,"Rotina com Jesus – O Consolador prometido","Cap. VI – O jugo leve / O Cristo Consolador","Aproximar Jesus do nosso dia a dia e compreender a Doutrina Espírita como roteiro de vida","OESE – Cap. VI","Shirley","15/03","29/03 a 03/04","realizado","O Evangelho Segundo o Espiritismo"],
+    [12,"A Lei de Amor – Ama e trabalha","Cap. XI – Amar ao próximo como a si mesmo","Compreender que o Amor interliga todas as criaturas e deve amenizar as misérias sociais","OESE – Cap. XI, itens 8 a 10","Valéria","21/03","05/04 a 10/04","realizado","O Evangelho Segundo o Espiritismo"],
+    [13,"Humildade – Fora da caridade não há salvação","Cap. XV – Fora da caridade não há salvação","Sentir que a caridade aquece o coração e construir olhares de empatia e comunicação não violenta","OESE – Cap. XV","Marizete","29/03","12/04 a 17/04","realizado","O Evangelho Segundo o Espiritismo"],
+    [14,"Afinidades Espirituais – Evangelho no lar – Sabedoria para pedir","Cap. XXVII – Pedi e obtereis","Construir o hábito de nos mantermos conectados com a espiritualidade e compreender o poder da prece","","Bia e Analice","04/04","19/04 a 24/04","realizado","O Evangelho Segundo o Espiritismo"],
+    [15,"Animais, nossos irmãos","","","","Catarina","11/04","26/04 a 01/05","realizado","Complementar"],
+    [16,"Deus, o grande amigo de todos","Deus como causa primeira – Atributos divinos – Deus presente em tudo","Apresentar Deus como Criador bondoso e justo; levar as crianças a compreenderem que Deus existe e se manifesta na criação","Livro dos Espíritos – Livro I, Cap. I, questões 1 ao 13","Danilo","18/04","03/05 a 08/05","realizado","Doutrina Espírita"],
+    [17,"Somos Espíritos em aprendizado","O que são Espíritos – Espíritos criados simples e ignorantes, em evolução","Compreender a natureza espiritual do ser humano; conscientizar que somos espíritos imortais vivendo uma experiência material","Livro dos Espíritos – Livro II, Cap. I, questões 87 e 135","Bia","25/04","10/05 a 15/05","realizado","Doutrina Espírita"],
+    [18,"Vivendo muitas vezes – A Reencarnação","Reencarnação como oportunidade – A criança como Espírito reencarnado","Introduzir o conceito de pluralidade das existências e a reencarnação como oportunidade de aprendizado","Livro dos Espíritos – Livro II, Cap. IV, questões 166 a 171","Laura","02/05","17/05 a 22/05","realizado","Doutrina Espírita"],
+    [19,"Deus espalhou a vida pelo Universo – Pluralidade dos mundos habitados","A Terra é um mundo de aprendizado – Existem outros mundos","Ajudar a criança a compreender que Deus nos ama e que existem muitos mundos criados por Ele","Livro dos Espíritos – questões 55 a 58 / 234 e 236","Marizete","09/05","24/05 a 29/05","realizado","Doutrina Espírita"],
+    [20,"Escolhas certas – Livre-arbítrio","Liberdade e livre-arbítrio – Consequências naturais das ações","Levar a criança a compreender que é responsável por suas escolhas e que elas têm consequências","Livro dos Espíritos – Livro III, Cap. X, questões 843 a 850 e questões 621 e 622","Raphael","16/05","31/05 a 05/06","realizado","Doutrina Espírita"],
+    [21,"Viver em paz é respeitar e amar","Amor e carinho no dia a dia – Respeito – Fazer as pazes","Levar a criança a compreender que a paz se constrói com atitudes de amor, respeito e diálogo","Livro dos Espíritos – questões 642, 873 a 875 e 886","Shirley","23/05","07/06 a 12/06","proximo","Doutrina Espírita"],
+    [22,"Nosso protetor invisível","Influência dos Espíritos em nossa vida – Espíritos protetores","Apresentar o conceito de anjo da guarda e levar a criança a sentir-se amada e protegida","Livro dos Espíritos – Livro II, Cap. IX – Intervenção dos Espíritos no Mundo Corpóreo","Valéria","30/05","14/06 a 19/06","proximo","Doutrina Espírita"],
+    [23,"Espíritos, Percepções Espirituais e o Medo","Há Espíritos – Lugares assombrados e as percepções espirituais","Levar os evangelizandos a compreenderem que os Espíritos existem, desmistificando o medo","Livro dos Médiuns – Introdução e Cap. 9 / Livro dos Espíritos – Parte Segunda, Cap. VI","Bia","06/06","21/06 a 26/06","proximo","Mediunidade"],
+    [24,"Identidade dos Espíritos – Os bons e os maus e suas consequências","","Levar o educando a compreender que os Espíritos são seres humanos em diferentes graus de evolução","Livro dos Médiuns – Cap. 24","Catarina","13/06","28/06 a 03/07","proximo","Mediunidade"],
+    [25,"Mediunidade e Comunicabilidade dos Espíritos","O que é mediunidade – Comunicabilidade dos Espíritos","Compreender que a mediunidade é uma faculdade natural por meio da qual ocorre a comunicabilidade dos Espíritos","LM – Cap. 14, item 49 / Cap. 19 / OESE – Cap. 24, item 12 / Cap. 26, item 10","Danilo","20/06","05/07 a 10/07","proximo","Mediunidade"],
+    [26,"Eu sou Médium – Mediunidade infantil","Identificar características mediúnicas – Como orientar crianças","Esclarecer sobre o que é ser um médium e observar os sinais mediúnicos nas crianças","LM – Cap. 14, item 159 / Cap. 28, item 221 / Dúvidas sobre a Mediunidade, questões 1 a 3 e 6","Jenyffer","27/06","12/07 a 17/07","proximo","Mediunidade"],
+    [27,"Educação da mediunidade – Finalidade moral da mediunidade","","Refletir sobre a autoavaliação do médium e o objetivo maior da mediunidade com Jesus, que é a caridade","LM – Cap. 217, questão 218 / Cap. 20 / Dúvidas sobre a Mediunidade, questão 8","Laura","04/07","19/07 a 24/07","proximo","Mediunidade"],
+    [28,"Cuidando da Mente e do Coração","Pensamentos e sentimentos – Pensamentos bons atraem paz","Levar o evangelizando a compreender a importância de cuidar dos pensamentos e sentimentos","LM – Cap. 14, item 49 / Cap. 23, itens 237 a 254 / A Gênese – Cap. 14, itens 45 a 49","Marizete","11/07","26/07 a 31/07","proximo","Mediunidade"],
+    [29,"Tema Livre","Sugestão – Obsessão e tipos de obsessão / Os filhos são médiuns dos pais","","","Raphael","18/07","02/08 a 07/08","livre","Mediunidade"],
+    [30,"Tema Livre","Sugestão – Cap. XVII Sede perfeitos / Reforma Íntima","","","Shirley","25/07","09/08 a 14/08","livre","O Evangelho Segundo o Espiritismo"],
+    [31,"Introdução aos estados espirituais","","Levar o evangelizando a compreender que céu e inferno são estados de consciência ligados às escolhas","O Céu e o Inferno – Primeira Parte e Segunda Parte – Exemplos","Valéria","01/08","16/08 a 21/08","proximo","Céu e Inferno"],
+    [32,"As causas do sofrimento espiritual","","Compreender que o sofrimento espiritual decorre das escolhas e sentimentos como orgulho e egoísmo","O Céu e o Inferno – Segunda Parte – Espíritos sofredores / Primeira Parte – causas do sofrimento moral","Bia e Analice","08/08","23/08 a 28/08","proximo","Céu e Inferno"],
+    [33,"A felicidade dos bons","","Demonstrar que o Céu não é um lugar, mas um estado de paz interior de quem cumpre a lei do amor","O Céu e o Inferno – Cap. III (A Felicidade) / OESE – Cap. V, item 20","Catarina","15/08","30/08 a 04/09","proximo","Céu e Inferno"],
+    [34,"Arrependimento e Reparação","O que é arrependimento – O que é remorso – Como curar a dor que causamos","Compreender que o erro faz parte do aprendizado e que o arrependimento sincero permite o recomeço","O Céu e o Inferno – 1ª Parte, Cap. VII, itens 1 a 10 / Cap. VIII e IX / OESE – Cap. V, itens 4 a 10","Danilo","22/08","06/09 a 11/09","proximo","Céu e Inferno"],
+    [35,"A misericórdia divina","Deus como Pai amoroso – Amparo espiritual aos arrependidos","Favorecer a compreensão de Deus como Pai amoroso e justo que sempre oferece novas oportunidades","O Céu e o Inferno / Livro dos Espíritos – Livro I Cap. I / Livro III Cap. XI / Livro IV Cap. II","Jenyffer","29/08","13/09 a 18/09","proximo","Céu e Inferno"],
+    [36,"O tempo e a vontade de mudar","O sofrimento não é eterno – Progresso espiritual como lei universal","Levar os evangelizandos a compreender que o tempo de superação está relacionado à disposição para a mudança","","Laura","05/09","20/09 a 25/09","proximo","Céu e Inferno"],
+    [37,"Aplicação prática hoje – construindo o céu interior","Aplicação dos ensinamentos espíritas no cotidiano – Encarnação como oportunidade","Estimular os evangelizandos a perceberem a encarnação atual como oportunidade de progresso espiritual","","Marizete","12/09","27/09 a 02/10","proximo","Céu e Inferno"],
+    [38,"Tema Livre","Sugestão – Revolta prolonga a dor; aceitação responsável favorece a superação","","","Raphael","19/09","04/10 a 09/10","livre","Céu e Inferno"],
+    [39,"Tríplice aspecto da Doutrina – Foco na Ciência","Espiritismo – Razão, Ciência e Prova – O método científico","Demonstrar que o Espiritismo é resultado da aplicação do método científico-experimental","A Gênese – Cap. I, itens 14, 15, 16 e 55","Shirley","26/09","11/10 a 16/10","proximo","A Gênese"],
+    [40,"Formação da Terra","Como a Terra nasceu – O Espiritismo e a superação das teorias religiosas do século XIX","Mostrar como o Espiritismo entende a formação do nosso planeta","A Gênese – Cap. VII (Esboço geológico da Terra) / Cap. VIII – Teorias sobre a Formação da Terra","Valéria","03/10","18/10 a 23/10","proximo","A Gênese"],
+    [41,"Formação dos Seres Vivos","Da sementinha ao ser vivo – O Espiritismo e a explicação racional da vida","Mostrar que a formação dos seres vivos seguiu as leis naturais que regem o reino inorgânico","A Gênese – Cap. X, itens 12 a 15","Bia e Analice","10/10","25/10 a 30/10","proximo","A Gênese"],
+    [42,"Explicação dos milagres","Existem milagres ou leis desconhecidas – Ciência, Espiritismo e o fim do sobrenatural","Compreender que os chamados milagres são manifestações de leis naturais de Deus","A Gênese – Cap. XIII (Caracteres dos Milagres) / Cap. XV (Os Milagres do Evangelho)","Catarina","17/10","01/11 a 06/11","proximo","A Gênese"],
+    [43,"Teoria da Presciência","Os Espíritos preveem o futuro – Deus sabe, mas nós escolhemos","Compreender que a presciência espiritual é uma visão ampliada do tempo, sem anular o livre-arbítrio","A Gênese – Cap. XVII","Danilo","24/10","08/11 a 13/11","proximo","A Gênese"],
+    [44,"Transformação moral do globo – nova era","O mundo está aprendendo a amar – O que é a Nova Era","Compreender que a Terra vive um processo de regeneração moral","A Gênese – Cap. IX, itens 11 a 14 / Cap. XVII, itens 56 a 63","Jenyffer","31/10","15/11 a 20/11","proximo","A Gênese"],
+    [45,"Tema Livre","Sugestão – O repovoamento espiritual da Terra","","","Laura","07/11","22/11 a 27/11","livre","A Gênese"],
+    [46,"Fazer o bem sempre – Lei de Amor","Lei de justiça, amor e caridade – A Regra Áurea – Caridade como benevolência","Ensinar a Regra Áurea como base moral espírita e que fazer o bem é uma forma de amar a Deus","Livro dos Espíritos – Livro III, Cap. XI – Lei de Justiça, Amor e Caridade","Marizete","14/11","29/11 a 04/12","proximo","Doutrina Espírita"],
+    [47,"Cada um tem uma missão na vida","Ocupações e missões dos Espíritos – Utilidade do trabalho – Cooperação","Ajudar a criança a perceber que todos nós temos uma missão","Livro dos Espíritos – questões 558 a 585","Raphael","21/11","06/12 a 11/12","proximo","Doutrina Espírita"],
+    [48,"Finalidade moral da mediunidade","","Esclarecer sobre o objetivo maior do exercício da mediunidade com Jesus, que é a caridade ao próximo","","Shirley","28/11","13/12 a 18/12","proximo","Mediunidade"],
+    [49,"Natureza das comunicações – como ocorrem","","Levar os evangelizandos a compreender que nem todas as comunicações espirituais têm a mesma qualidade","Livro dos Médiuns – Cap. 20","Valéria","05/12","03/01 a 08/01","proximo","Mediunidade"],
+    [50,"Buscai e achareis – Pensamento positivo e Foco no Bem","Cap. XXV – Buscai e achareis","Compreender a importância de alinhar o que queremos e o que precisamos e refletir sobre o que temos buscado","","Bia e Analice","12/12","10/01 a 15/01","proximo","O Evangelho Segundo o Espiritismo"],
+    [51,"A reparação ativa","Necessidade de reparar o mal cometido – Reconstrução de laços e valores","Levar os evangelizandos a compreender que todo erro pode ser reparado por atitudes concretas de amor","O Céu e o Inferno – Parte I Cap. VII / Parte II Cap. VIII / Livro dos Espíritos – Cap. IX","Catarina","19/12","17/01 a 22/01","proximo","Céu e Inferno"],
+    [52,"Aplicação prática hoje – Responsabilidade nas relações","Responsabilidade nas relações, no uso do tempo, dos bens e dos afetos","Estimular os evangelizandos a perceberem a encarnação atual como oportunidade de progresso espiritual","","Danilo","09/01","24/01 a 29/01","proximo","Complementar"],
+    [53,"O que são os nossos fluídos","Vivemos num oceano invisível – O pensamento como força criadora","Compreender que vivemos imersos em um oceano invisível de matéria sutil no qual o pensamento atua como força criadora","A Gênese – Cap. XIV – Os Fluidos","Jenyffer","16/01","31/01 a 05/02","proximo","A Gênese"],
+    [54,"Emigração e Imigração entre planetas – Pluralidade dos mundos habitados","A Terra é nossa escola – Por que alguns Espíritos mudam de mundo","Compreender que a Terra é a morada espiritual adequada ao nosso momento evolutivo","A Gênese – Cap. XI (Gênese Espiritual), itens 35 a 37","Laura","23/01","07/02 a 12/02","proximo","A Gênese"],
+    [55,"Geração nova – O repovoamento espiritual da Terra","Como se dá a mudança dos espíritos que nascem sobre a Terra","Explicar a ideia da Geração nova e como isso gera o progresso","","Marizete","30/01","21/02 a 26/02","proximo","Complementar"]
+  ];
+  d.forEach(function(r){
+    AULAS.push({n:r[0],tema:r[1],subtema:r[2],obj:r[3],refs:r[4],resp:r[5],entrega:r[6],periodo:r[7],status:r[8],bloco:r[9]});
+  });
+})();
+// ─────────────────────────────────────────────────────────────
 
-// STATUS DISPLAY
+var viewMode = 'grade';
+var aulaAtiva = null;
+
 function statusLabel(s){
   if(s==='realizado') return {tag:'realizado',txt:'✅ Realizado'};
   if(s==='livre') return {tag:'livre',txt:'🌟 Tema Livre'};
   return {tag:'proximo',txt:'⏳ Próximo'};
 }
 
-// STATS
 function renderStats(){
-  const total = AULAS.length;
-  const real = AULAS.filter(a=>a.status==='realizado').length;
-  const prox = AULAS.filter(a=>a.status==='proximo').length;
-  const livre = AULAS.filter(a=>a.status==='livre').length;
-  document.getElementById('stats').innerHTML=`
-    <div class="stat"><div class="stat-num">${total}</div><div class="stat-label">Total de Aulas</div></div>
-    <div class="stat realizado"><div class="stat-num">${real}</div><div class="stat-label">Realizadas</div></div>
-    <div class="stat proximo"><div class="stat-num">${prox}</div><div class="stat-label">Próximas</div></div>
-    <div class="stat" style="background:#fdebd0;border-color:#f0c090"><div class="stat-num" style="color:#a04000">${livre}</div><div class="stat-label">Tema Livre</div></div>
-  `;
+  var total=AULAS.length, real=0, prox=0, livre=0;
+  AULAS.forEach(function(a){ if(a.status==='realizado') real++; else if(a.status==='livre') livre++; else prox++; });
+  document.getElementById('stats').innerHTML=
+    '<div class="stat"><div class="stat-num">'+total+'</div><div class="stat-label">Total de Aulas</div></div>'+
+    '<div class="stat realizado"><div class="stat-num">'+real+'</div><div class="stat-label">Realizadas</div></div>'+
+    '<div class="stat proximo"><div class="stat-num">'+prox+'</div><div class="stat-label">Próximas</div></div>'+
+    '<div class="stat" style="background:#fdebd0;border-color:#f0c090"><div class="stat-num" style="color:#a04000">'+livre+'</div><div class="stat-label">Tema Livre</div></div>';
 }
 
-// FILTER
 function filtrar(){
-  const q = document.getElementById('busca').value.toLowerCase();
-  const st = document.getElementById('filtroStatus').value;
-  const bl = document.getElementById('filtroBloco').value;
-  return AULAS.filter(a=>{
-    const matchQ = !q || [a.tema,a.resp,a.refs,a.obj,a.subtema||''].join(' ').toLowerCase().includes(q);
-    const matchSt = !st || a.status===st;
-    const matchBl = !bl || a.bloco===bl;
-    return matchQ && matchSt && matchBl;
+  var q=document.getElementById('busca').value.toLowerCase();
+  var st=document.getElementById('filtroStatus').value;
+  var bl=document.getElementById('filtroBloco').value;
+  return AULAS.filter(function(a){
+    var matchQ=!q||[a.tema,a.resp,a.refs,a.obj,a.subtema||''].join(' ').toLowerCase().indexOf(q)>=0;
+    var matchSt=!st||a.status===st;
+    var matchBl=!bl||a.bloco===bl;
+    return matchQ&&matchSt&&matchBl;
   });
 }
 
-// RENDER
-function getAnexos(n){
-  try{ return JSON.parse(localStorage.getItem('geeal_anexos_'+n)||'[]'); }catch(e){ return []; }
-}
-function saveAnexos(n,arr){ localStorage.setItem('geeal_anexos_'+n, JSON.stringify(arr)); }
-
 function fileIcon(name){
-  const ext = name.split('.').pop().toLowerCase();
-  if(['pdf'].includes(ext)) return '📄';
-  if(['doc','docx'].includes(ext)) return '📝';
-  if(['png','jpg','jpeg','gif','webp'].includes(ext)) return '🖼️';
+  var ext=name.split('.').pop().toLowerCase();
+  if(ext==='pdf') return '📄';
+  if(ext==='doc'||ext==='docx') return '📝';
+  if(['png','jpg','jpeg','gif','webp'].indexOf(ext)>=0) return '🖼️';
   return '📎';
 }
 
 function renderCard(a){
-  const sl = statusLabel(a.status);
-  const anexos = getAnexos(a.n);
-  return `<div class="card ${a.status}" data-n="${a.n}" onclick="abrirModal(${a.n})">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
-      <div class="card-num">Aula ${a.n}</div>
-      <span class="tag ${sl.tag}">${sl.txt}</span>
-    </div>
-    <div class="card-tema">${a.tema}</div>
-    ${a.subtema?`<div style="font-size:.78rem;color:var(--subtexto);font-style:italic;margin-bottom:.3rem">${a.subtema}</div>`:''}
-    <div class="card-meta">
-      <span>👤 ${a.resp}</span>
-      <span>📅 ${a.periodo}</span>
-    </div>
-    <div style="margin-top:.4rem"><span class="tag bloco">${a.bloco}</span></div>
-    <div class="card-footer">
-      <button class="btn-anexo" onclick="event.stopPropagation();abrirModal(${a.n},true)">📎 Anexos</button>
-      <span class="anexo-count">${anexos.length>0?anexos.length+' arquivo(s)':''}</span>
-    </div>
-  </div>`;
+  var sl=statusLabel(a.status);
+  return '<div class="card '+a.status+'" onclick="abrirModal('+a.n+')">'+
+    '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">'+
+    '<div class="card-num">Aula '+a.n+'</div>'+
+    '<span class="tag '+sl.tag+'">'+sl.txt+'</span></div>'+
+    '<div class="card-tema">'+a.tema+'</div>'+
+    (a.subtema?'<div style="font-size:.78rem;color:var(--subtexto);font-style:italic;margin-bottom:.3rem">'+a.subtema+'</div>':'')+
+    '<div class="card-meta"><span>👤 '+a.resp+'</span><span>📅 '+a.periodo+'</span></div>'+
+    '<div style="margin-top:.4rem"><span class="tag bloco">'+a.bloco+'</span></div>'+
+    '<div class="card-footer">'+
+    '<button class="btn-anexo" onclick="event.stopPropagation();abrirModal('+a.n+',true)">📎 Anexos</button>'+
+    '</div></div>';
 }
 
 function renderItem(a){
-  const sl = statusLabel(a.status);
-  return `<div class="item-lista ${a.status}" onclick="abrirModal(${a.n})">
-    <div class="item-num">${a.n}</div>
-    <div class="item-info">
-      <div class="item-tema">${a.tema}</div>
-      <div class="item-sub">👤 ${a.resp} · 📅 ${a.periodo} · ${a.bloco}</div>
-    </div>
-    <div class="item-right">
-      <span class="tag ${sl.tag}">${sl.txt}</span>
-    </div>
-  </div>`;
+  var sl=statusLabel(a.status);
+  return '<div class="item-lista '+a.status+'" onclick="abrirModal('+a.n+')">'+
+    '<div class="item-num">'+a.n+'</div>'+
+    '<div class="item-info"><div class="item-tema">'+a.tema+'</div>'+
+    '<div class="item-sub">👤 '+a.resp+' · 📅 '+a.periodo+' · '+a.bloco+'</div></div>'+
+    '<div class="item-right"><span class="tag '+sl.tag+'">'+sl.txt+'</span></div></div>';
 }
 
 function render(){
-  const lista = filtrar();
-  document.getElementById('resultadoInfo').textContent = `Exibindo ${lista.length} de ${AULAS.length} aulas`;
-  const el = document.getElementById('conteudo');
-  if(lista.length===0){
-    el.innerHTML=`<div class="vazio">🔍 Nenhuma aula encontrada com esses filtros.</div>`;
-    return;
-  }
+  var lista=filtrar();
+  document.getElementById('resultadoInfo').textContent='Exibindo '+lista.length+' de '+AULAS.length+' aulas';
+  var el=document.getElementById('conteudo');
+  if(!lista.length){ el.innerHTML='<div class="vazio">🔍 Nenhuma aula encontrada.</div>'; return; }
   if(viewMode==='grade'){
-    el.innerHTML=`<div class="grade">${lista.map(renderCard).join('')}</div>`;
+    el.innerHTML='<div class="grade">'+lista.map(renderCard).join('')+'</div>';
   } else {
-    el.innerHTML=`<div class="lista">${lista.map(renderItem).join('')}</div>`;
+    el.innerHTML='<div class="lista">'+lista.map(renderItem).join('')+'</div>';
   }
 }
 
-// MODAL
-function abrirModal(n, focoAnexo=false){
-  const a = AULAS.find(x=>x.n===n);
-  aulaAtiva = n;
-  const sl = statusLabel(a.status);
-  document.getElementById('mNum').textContent = `Aula ${a.n}`;
-  document.getElementById('mTitulo').textContent = a.tema;
-  document.getElementById('mTags').innerHTML = `<span class="tag ${sl.tag}">${sl.txt}</span><span class="tag bloco">${a.bloco}</span>`;
-  const objWrap = document.getElementById('mObjWrap');
+function abrirModal(n, focoAnexo){
+  var a=AULAS.find(function(x){ return x.n===n; });
+  aulaAtiva=n;
+  var sl=statusLabel(a.status);
+  document.getElementById('mNum').textContent='Aula '+a.n;
+  document.getElementById('mTitulo').textContent=a.tema;
+  document.getElementById('mTags').innerHTML='<span class="tag '+sl.tag+'">'+sl.txt+'</span><span class="tag bloco">'+a.bloco+'</span>';
+  var objWrap=document.getElementById('mObjWrap');
   if(a.obj){ objWrap.style.display=''; document.getElementById('mObj').textContent=a.obj; }
   else objWrap.style.display='none';
-  document.getElementById('mResp').textContent = a.resp;
-  document.getElementById('mPer').textContent = a.periodo;
-  document.getElementById('mEnt').textContent = a.entrega;
-  document.getElementById('mBloco').textContent = a.bloco;
-  const refWrap = document.getElementById('mRefWrap');
+  document.getElementById('mResp').textContent=a.resp;
+  document.getElementById('mPer').textContent=a.periodo;
+  document.getElementById('mEnt').textContent=a.entrega;
+  document.getElementById('mBloco').textContent=a.bloco;
+  var refWrap=document.getElementById('mRefWrap');
   if(a.refs){
     refWrap.style.display='';
-    document.getElementById('mRefs').innerHTML = a.refs.split('/').map(r=>`<div class="ref-item">📖 ${r.trim()}</div>`).join('');
+    document.getElementById('mRefs').innerHTML=a.refs.split('/').map(function(r){ return '<div class="ref-item">📖 '+r.trim()+'</div>'; }).join('');
   } else refWrap.style.display='none';
   renderArquivos(n);
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
-  if(focoAnexo) setTimeout(()=>{document.getElementById('btnSel').scrollIntoView({behavior:'smooth'})},200);
+  if(focoAnexo) setTimeout(function(){ document.getElementById('btnSel').scrollIntoView({behavior:'smooth'}); },200);
 }
 
 function fecharModal(){
   document.getElementById('overlay').classList.remove('open');
   document.body.style.overflow='';
   aulaAtiva=null;
-  render();
 }
 
-function renderArquivos(n){
-  const arr = getAnexos(n);
-  const lista = document.getElementById('arquivosLista');
-  if(!arr.length){ lista.innerHTML=`<div style="font-size:.82rem;color:var(--subtexto);font-style:italic;text-align:center;padding:.5rem">Nenhum arquivo anexado ainda.</div>`; return; }
-  lista.innerHTML = arr.map((f,i)=>`
-    <div class="arquivo-item">
-      <span class="arquivo-icon">${fileIcon(f.name)}</span>
-      <span class="arquivo-nome">${f.name}</span>
-      <div class="arquivo-acoes">
-        <button class="btn-dl" onclick="downloadArquivo(${n},${i})">⬇️ Baixar</button>
-        <button class="btn-rm" onclick="removerArquivo(${n},${i})">🗑️</button>
-      </div>
-    </div>`).join('');
+async function renderArquivos(n){
+  var lista=document.getElementById('arquivosLista');
+  lista.innerHTML='<div style="font-size:.82rem;color:var(--subtexto);text-align:center;padding:.5rem">⏳ Carregando…</div>';
+  var arquivos=await sbListar(n);
+  if(!arquivos.length){
+    lista.innerHTML='<div style="font-size:.82rem;color:var(--subtexto);font-style:italic;text-align:center;padding:.5rem">Nenhum arquivo anexado ainda.</div>';
+    return;
+  }
+  lista.innerHTML=arquivos.map(function(f){
+    var path='aula_'+n+'/'+f.name;
+    var url=sbPublicUrl(path);
+    var nome=f.name.replace(/^\d+_/,'');
+    return '<div class="arquivo-item">'+
+      '<span class="arquivo-icon">'+fileIcon(nome)+'</span>'+
+      '<span class="arquivo-nome">'+nome+'</span>'+
+      '<div class="arquivo-acoes">'+
+      '<a class="btn-dl" href="'+url+'" target="_blank">⬇️ Baixar</a>'+
+      '<button class="btn-rm" onclick="removerArquivo(\''+path+'\','+n+')">🗑️</button>'+
+      '</div></div>';
+  }).join('');
 }
 
-function downloadArquivo(n,i){
-  const arr = getAnexos(n);
-  const f = arr[i];
-  if(!f) return;
-  const a = document.createElement('a');
-  a.href = f.data;
-  a.download = f.name;
-  a.click();
-}
-
-function removerArquivo(n,i){
-  const arr = getAnexos(n);
-  arr.splice(i,1);
-  saveAnexos(n,arr);
+async function removerArquivo(path,n){
+  if(!confirm('Remover este arquivo para todos?')) return;
+  await sbDeletar(path);
   renderArquivos(n);
 }
 
 function copiarModeloAula(){
-  const a = AULAS.find(x=>x.n===aulaAtiva);
+  var a=AULAS.find(function(x){ return x.n===aulaAtiva; });
   if(!a) return;
-  const sl = statusLabel(a.status);
-  let txt = '';
-  txt += `✡️ *GEEAL 2026 — Grupo de Educação Espírita André Luiz*\n`;
-  txt += `${'─'.repeat(38)}\n\n`;
-  txt += `📖 *Aula ${a.n} — ${a.tema}*\n`;
-  if(a.subtema) txt += `_${a.subtema}_\n`;
-  txt += `\n`;
-  txt += `🏷️ *Bloco:* ${a.bloco}\n`;
-  txt += `${sl.txt}\n`;
-  txt += `\n`;
-  if(a.obj){
-    txt += `🎯 *Objetivo:*\n${a.obj}\n\n`;
-  }
+  var sl=statusLabel(a.status);
+  var txt='✡️ *GEEAL 2026 — Grupo de Educação Espírita André Luiz*\n';
+  txt+='──────────────────────────────────────\n\n';
+  txt+='📖 *Aula '+a.n+' — '+a.tema+'*\n';
+  if(a.subtema) txt+='_'+a.subtema+'_\n';
+  txt+='\n🏷️ *Bloco:* '+a.bloco+'\n'+sl.txt+'\n\n';
+  if(a.obj) txt+='🎯 *Objetivo:*\n'+a.obj+'\n\n';
   if(a.refs){
-    txt += `📚 *Referências Bibliográficas:*\n`;
-    a.refs.split('/').forEach(r=> txt += `• ${r.trim()}\n`);
-    txt += `\n`;
+    txt+='📚 *Referências:*\n';
+    a.refs.split('/').forEach(function(r){ txt+='• '+r.trim()+'\n'; });
+    txt+='\n';
   }
-  txt += `👤 *Responsável:* ${a.resp}\n`;
-  txt += `📅 *Período de Estudo:* ${a.periodo}\n`;
-  txt += `📬 *Entrega:* ${a.entrega}\n`;
-  txt += `\n_"Amar, Conhecer e Servir"_ 🕊️`;
-
-  navigator.clipboard.writeText(txt).then(()=>{
-    const msg = document.getElementById('copiadoMsg');
+  txt+='👤 *Responsável:* '+a.resp+'\n';
+  txt+='📅 *Período:* '+a.periodo+'\n';
+  txt+='📬 *Entrega:* '+a.entrega+'\n\n';
+  txt+='_"Amar, Conhecer e Servir"_ 🕊️';
+  navigator.clipboard.writeText(txt).then(function(){
+    var msg=document.getElementById('copiadoMsg');
     msg.style.display='block';
-    setTimeout(()=> msg.style.display='none', 3000);
-  }).catch(()=>{
-    // fallback para dispositivos sem clipboard API
-    const ta = document.createElement('textarea');
-    ta.value = txt;
-    ta.style.position='fixed';ta.style.opacity='0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    const msg = document.getElementById('copiadoMsg');
+    setTimeout(function(){ msg.style.display='none'; },3000);
+  }).catch(function(){
+    var ta=document.createElement('textarea');
+    ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    var msg=document.getElementById('copiadoMsg');
     msg.style.display='block';
-    setTimeout(()=> msg.style.display='none', 3000);
+    setTimeout(function(){ msg.style.display='none'; },3000);
   });
 }
-
-document.getElementById('btnSel').onclick = ()=> document.getElementById('fileInput').click();
-
-document.getElementById('fileInput').onchange = function(){
-  const files = Array.from(this.files);
-  let pendentes = files.length;
-  if(!pendentes) return;
-  files.forEach(file=>{
-    const reader = new FileReader();
-    reader.onload = e=>{
-      const arr = getAnexos(aulaAtiva);
-      arr.push({name:file.name, data:e.target.result, size:file.size});
-      saveAnexos(aulaAtiva, arr);
-      pendentes--;
-      if(pendentes===0) renderArquivos(aulaAtiva);
-    };
-    reader.readAsDataURL(file);
-  });
-  this.value='';
-};
-
-// EVENTOS
-document.getElementById('busca').addEventListener('input', render);
-document.getElementById('filtroStatus').addEventListener('change', render);
-document.getElementById('filtroBloco').addEventListener('change', render);
-document.getElementById('btnGrade').onclick=()=>{ viewMode='grade'; document.getElementById('btnGrade').classList.add('ativo'); document.getElementById('btnLista').classList.remove('ativo'); render(); };
-document.getElementById('btnLista').onclick=()=>{ viewMode='lista'; document.getElementById('btnLista').classList.add('ativo'); document.getElementById('btnGrade').classList.remove('ativo'); render(); };
-document.getElementById('btnFechar').onclick = fecharModal;
-document.getElementById('overlay').onclick = e=>{ if(e.target===document.getElementById('overlay')) fecharModal(); };
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') fecharModal(); });
 
 function toggleDark(){
-  const dark = document.body.classList.toggle('dark');
-  document.getElementById('btnDark').textContent = dark ? '☀️ Claro' : '🌙 Dark';
-  localStorage.setItem('geeal_dark', dark ? '1' : '0');
+  var dark=document.body.classList.toggle('dark');
+  document.getElementById('btnDark').textContent=dark?'☀️ Claro':'🌙 Dark';
+  localStorage.setItem('geeal_dark',dark?'1':'0');
 }
-// restaurar preferência
 if(localStorage.getItem('geeal_dark')==='1'){
   document.body.classList.add('dark');
   document.getElementById('btnDark').textContent='☀️ Claro';
 }
 
-// INIT
+document.getElementById('busca').addEventListener('input',render);
+document.getElementById('filtroStatus').addEventListener('change',render);
+document.getElementById('filtroBloco').addEventListener('change',render);
+document.getElementById('btnGrade').onclick=function(){ viewMode='grade'; document.getElementById('btnGrade').classList.add('ativo'); document.getElementById('btnLista').classList.remove('ativo'); render(); };
+document.getElementById('btnLista').onclick=function(){ viewMode='lista'; document.getElementById('btnLista').classList.add('ativo'); document.getElementById('btnGrade').classList.remove('ativo'); render(); };
+document.getElementById('btnFechar').onclick=fecharModal;
+document.getElementById('overlay').onclick=function(e){ if(e.target===document.getElementById('overlay')) fecharModal(); };
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') fecharModal(); });
+
+document.getElementById('btnSel').onclick=function(){ document.getElementById('fileInput').click(); };
+document.getElementById('fileInput').onchange=async function(){
+  var files=Array.from(this.files);
+  if(!files.length) return;
+  var btn=document.getElementById('btnSel');
+  btn.textContent='⏳ Enviando…'; btn.disabled=true;
+  for(var i=0;i<files.length;i++){
+    try{ await sbUpload(aulaAtiva,files[i]); }
+    catch(e){ alert('Erro ao enviar '+files[i].name); }
+  }
+  btn.textContent='📎 Adicionar arquivo'; btn.disabled=false;
+  this.value='';
+  renderArquivos(aulaAtiva);
+};
+
 renderStats();
 render();
 </script>
